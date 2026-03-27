@@ -31,7 +31,7 @@ def search_market_for_styles(style_list):
     and finds one real listing for EACH style.
     """
     platforms = ["eBay", "Depop", "Vinted"]
-    prices = ["$15.00", "$22.50", "$35.00", "$40.00", "$18.50", "$25.00", "$12.00"]
+    prices = ["£15.00", "£22.50", "£35.00", "£40.00", "£18.50", "£25.00", "£12.00"]
     
     results = []
 
