@@ -11,10 +11,10 @@ allowed_origins = [origin.strip() for origin in raw_origins.split(",") if origin
 
 if not allowed_origins:
     allowed_origins = [
-        "=https://ai.houseofrevera.com",
+        "https://ai.houseofrevera.com",
     ]
 
-app = FastAPI(title="Re-Style AI Engine", version="2.0.1")
+app = FastAPI(title="House of Revera AI Engine", version="2.0.1")
 
 app.add_middleware(
     CORSMiddleware,
@@ -42,9 +42,9 @@ def search_market_for_styles(style_list):
     for style in style_list:
         encoded_query = urllib.parse.quote_plus(style)
 
-        ebay_url = f"https://www.ebay.com/sch/i.html?_nkw={encoded_query}"
+        ebay_url = f"https://www.ebay.co.uk/sch/i.html?_nkw={encoded_query}"
         depop_url = f"https://www.depop.com/search/?q={encoded_query}"
-        vinted_url = f"https://www.vinted.com/catalog?search_text={encoded_query}"
+        vinted_url = f"https://www.vinted.co.uk/catalog?search_text={encoded_query}"
 
         platform_choice = random.choice(
             [
