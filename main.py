@@ -14,7 +14,7 @@ if not allowed_origins:
         "https://ai.houseofrevera.com",
     ]
 
-app = FastAPI(title="House of Revera AI Engine", version="2.2.0")
+app = FastAPI(title="House of Revera AI Engine", version="2.2.1")
 
 app.add_middleware(
     CORSMiddleware,
@@ -74,12 +74,48 @@ COLOR_FAMILIES = {
 
 
 CATEGORY_KEYWORDS = {
-    "tops": ["shirt", "top", "tee", "t-shirt", "tshirt", "blouse", "hoodie", "sweatshirt", "sweater", "jumper", "knit", "cardigan", "crop"],
-    "bottoms": ["pant", "pants", "jean", "jeans", "trouser", "trousers", "short", "shorts", "skirt", "leggings"],
+    "tops": [
+        "shirt",
+        "top",
+        "tee",
+        "t-shirt",
+        "tshirt",
+        "blouse",
+        "hoodie",
+        "sweatshirt",
+        "sweater",
+        "jumper",
+        "knit",
+        "cardigan",
+        "crop",
+    ],
+    "bottoms": [
+        "pant",
+        "pants",
+        "jean",
+        "jeans",
+        "trouser",
+        "trousers",
+        "short",
+        "shorts",
+        "skirt",
+        "leggings",
+    ],
     "dresses": ["dress", "gown"],
     "outerwear": ["jacket", "coat", "blazer", "shacket", "outerwear"],
     "accessories": ["bag", "handbag", "purse", "belt"],
-    "footwear": ["shoe", "shoes", "trainer", "trainers", "sneaker", "sneakers", "heel", "heels", "boot", "boots"],
+    "footwear": [
+        "shoe",
+        "shoes",
+        "trainer",
+        "trainers",
+        "sneaker",
+        "sneakers",
+        "heel",
+        "heels",
+        "boot",
+        "boots",
+    ],
 }
 
 
@@ -87,69 +123,297 @@ PAIRING_LIBRARY = {
     "tops": {
         "suggested_pairing": "Curated bottoms, bags and finishing pieces",
         "style_sets": {
-            "neutral_dark": ["Stone wide-leg trousers", "Dark blue straight jeans", "Structured beige shoulder bag", "Minimal gold hoops", "Clean white trainers"],
-            "neutral_mid": ["White tailored trousers", "Black straight jeans", "Taupe crossbody bag", "Silver mini hoops", "Polished loafers"],
-            "neutral_light": ["Black tailored trousers", "Mid-wash relaxed denim", "Tan crossbody bag", "Delicate layered necklace", "Low-profile loafers"],
-            "earth": ["Ecru straight-leg jeans", "Chocolate tailored trousers", "Woven tan handbag", "Slim gold bracelet", "Soft suede flats"],
-            "cool": ["Off-white tailored trousers", "Charcoal pleated pants", "Silver-tone shoulder bag", "Fine silver hoops", "White leather sneakers"],
-            "warm": ["Cream wide-leg trousers", "Dark indigo denim", "Taupe mini bag", "Textured gold earrings", "Nude slingback heels"],
-            "soft": ["Soft grey straight trousers", "Light-wash denim", "Pearl-detail shoulder bag", "Rose-gold stud earrings", "Neutral ballet flats"],
-            "bright": ["White structured trousers", "Blue straight jeans", "Beige statement mini bag", "Polished gold hoops", "Clean platform trainers"],
-            "default": ["Black tailored trousers", "Classic blue denim", "Neutral crossbody bag", "Minimal hoop earrings", "Clean everyday sneakers"],
+            "neutral_dark": [
+                "Stone wide-leg trousers",
+                "Dark blue straight jeans",
+                "Structured beige shoulder bag",
+                "Minimal gold hoops",
+                "Clean white trainers",
+            ],
+            "neutral_mid": [
+                "White tailored trousers",
+                "Black straight jeans",
+                "Taupe crossbody bag",
+                "Silver mini hoops",
+                "Polished loafers",
+            ],
+            "neutral_light": [
+                "Black tailored trousers",
+                "Mid-wash relaxed denim",
+                "Tan crossbody bag",
+                "Delicate layered necklace",
+                "Low-profile loafers",
+            ],
+            "earth": [
+                "Ecru straight-leg jeans",
+                "Chocolate tailored trousers",
+                "Woven tan handbag",
+                "Slim gold bracelet",
+                "Soft suede flats",
+            ],
+            "cool": [
+                "Off-white tailored trousers",
+                "Charcoal pleated pants",
+                "Silver-tone shoulder bag",
+                "Fine silver hoops",
+                "White leather sneakers",
+            ],
+            "warm": [
+                "Cream wide-leg trousers",
+                "Dark indigo denim",
+                "Taupe mini bag",
+                "Textured gold earrings",
+                "Nude slingback heels",
+            ],
+            "soft": [
+                "Soft grey straight trousers",
+                "Light-wash denim",
+                "Pearl-detail shoulder bag",
+                "Rose-gold stud earrings",
+                "Neutral ballet flats",
+            ],
+            "bright": [
+                "White structured trousers",
+                "Blue straight jeans",
+                "Beige statement mini bag",
+                "Polished gold hoops",
+                "Clean platform trainers",
+            ],
+            "default": [
+                "Black tailored trousers",
+                "Classic blue denim",
+                "Neutral crossbody bag",
+                "Minimal hoop earrings",
+                "Clean everyday sneakers",
+            ],
         },
     },
     "bottoms": {
         "suggested_pairing": "Curated tops, layers and styling details",
         "style_sets": {
-            "neutral_dark": ["Crisp white fitted top", "Soft beige knit cardigan", "Black cropped blazer", "Structured leather belt", "Pointed ankle boots"],
-            "neutral_mid": ["Black square-neck top", "White oversized shirt", "Charcoal fine-knit layer", "Slim leather belt", "Minimal loafers"],
-            "neutral_light": ["Black square-neck top", "Chocolate cropped knit", "Light trench layer", "Slim tan belt", "Minimal loafers"],
-            "earth": ["Ivory ribbed top", "Soft black cardigan", "Camel tailored blazer", "Gold buckle belt", "Cream low heels"],
-            "cool": ["White bodysuit", "Grey oversized blazer", "Navy fine-knit layer", "Silver buckle belt", "Clean white sneakers"],
-            "warm": ["Cream fitted blouse", "Black cropped jacket", "Soft taupe cardigan", "Slim gold belt", "Neutral kitten heels"],
-            "soft": ["White satin cami", "Light grey cardigan", "Muted beige blazer", "Delicate waist belt", "Soft-toned mules"],
-            "bright": ["Crisp white shirt", "Black fitted knit", "Neutral cropped blazer", "Polished belt", "Simple ankle boots"],
-            "default": ["Crisp white top", "Black fitted cardigan", "Neutral tailored blazer", "Classic slim belt", "Everyday loafers"],
+            "neutral_dark": [
+                "Crisp white fitted top",
+                "Soft beige knit cardigan",
+                "Black cropped blazer",
+                "Structured leather belt",
+                "Pointed ankle boots",
+            ],
+            "neutral_mid": [
+                "Black square-neck top",
+                "White oversized shirt",
+                "Charcoal fine-knit layer",
+                "Slim leather belt",
+                "Minimal loafers",
+            ],
+            "neutral_light": [
+                "Black square-neck top",
+                "Chocolate cropped knit",
+                "Light trench layer",
+                "Slim tan belt",
+                "Minimal loafers",
+            ],
+            "earth": [
+                "Ivory ribbed top",
+                "Soft black cardigan",
+                "Camel tailored blazer",
+                "Gold buckle belt",
+                "Cream low heels",
+            ],
+            "cool": [
+                "White bodysuit",
+                "Grey oversized blazer",
+                "Navy fine-knit layer",
+                "Silver buckle belt",
+                "Clean white sneakers",
+            ],
+            "warm": [
+                "Cream fitted blouse",
+                "Black cropped jacket",
+                "Soft taupe cardigan",
+                "Slim gold belt",
+                "Neutral kitten heels",
+            ],
+            "soft": [
+                "White satin cami",
+                "Light grey cardigan",
+                "Muted beige blazer",
+                "Delicate waist belt",
+                "Soft-toned mules",
+            ],
+            "bright": [
+                "Crisp white shirt",
+                "Black fitted knit",
+                "Neutral cropped blazer",
+                "Polished belt",
+                "Simple ankle boots",
+            ],
+            "default": [
+                "Crisp white top",
+                "Black fitted cardigan",
+                "Neutral tailored blazer",
+                "Classic slim belt",
+                "Everyday loafers",
+            ],
         },
     },
     "dresses": {
         "suggested_pairing": "Curated layers, bags and occasion-ready shoes",
         "style_sets": {
-            "neutral_dark": ["Cream tailored blazer", "Black mini shoulder bag", "Gold statement earrings", "Nude strappy heels", "Light trench coat"],
-            "neutral_mid": ["Soft white blazer", "Silver clutch bag", "Crystal stud earrings", "Black pointed heels", "Longline coat"],
-            "neutral_light": ["Black cropped blazer", "Taupe top-handle bag", "Pearl earrings", "Soft beige heels", "Fine knit layer"],
-            "earth": ["Ivory cropped cardigan", "Tan structured handbag", "Gold cuff bracelet", "Cream slingback heels", "Camel wrap coat"],
-            "cool": ["Soft grey blazer", "Silver-tone clutch bag", "Crystal stud earrings", "White pointed heels", "Longline tailored coat"],
-            "warm": ["Champagne mini bag", "Textured gold earrings", "Cream block heels", "Neutral evening blazer", "Delicate bracelet stack"],
-            "soft": ["Pearl-detail cardigan", "Blush-toned clutch bag", "Rose-gold earrings", "Nude slingback heels", "Light tailored coat"],
-            "bright": ["White cropped blazer", "Neutral statement clutch", "Polished gold hoops", "Minimal heels", "Soft tailored layer"],
-            "default": ["Neutral tailored blazer", "Structured mini handbag", "Minimal statement earrings", "Elegant heels", "Light outer layer"],
+            "neutral_dark": [
+                "Cream tailored blazer",
+                "Black mini shoulder bag",
+                "Gold statement earrings",
+                "Nude strappy heels",
+                "Light trench coat",
+            ],
+            "neutral_mid": [
+                "Soft white blazer",
+                "Silver clutch bag",
+                "Crystal stud earrings",
+                "Black pointed heels",
+                "Longline coat",
+            ],
+            "neutral_light": [
+                "Black cropped blazer",
+                "Taupe top-handle bag",
+                "Pearl earrings",
+                "Soft beige heels",
+                "Fine knit layer",
+            ],
+            "earth": [
+                "Ivory cropped cardigan",
+                "Tan structured handbag",
+                "Gold cuff bracelet",
+                "Cream slingback heels",
+                "Camel wrap coat",
+            ],
+            "cool": [
+                "Soft grey blazer",
+                "Silver-tone clutch bag",
+                "Crystal stud earrings",
+                "White pointed heels",
+                "Longline tailored coat",
+            ],
+            "warm": [
+                "Champagne mini bag",
+                "Textured gold earrings",
+                "Cream block heels",
+                "Neutral evening blazer",
+                "Delicate bracelet stack",
+            ],
+            "soft": [
+                "Pearl-detail cardigan",
+                "Blush-toned clutch bag",
+                "Rose-gold earrings",
+                "Nude slingback heels",
+                "Light tailored coat",
+            ],
+            "bright": [
+                "White cropped blazer",
+                "Neutral statement clutch",
+                "Polished gold hoops",
+                "Minimal heels",
+                "Soft tailored layer",
+            ],
+            "default": [
+                "Neutral tailored blazer",
+                "Structured mini handbag",
+                "Minimal statement earrings",
+                "Elegant heels",
+                "Light outer layer",
+            ],
         },
     },
     "outerwear": {
         "suggested_pairing": "Curated core outfit pieces",
         "style_sets": {
-            "neutral_dark": ["White fitted tee", "Blue straight jeans", "Fine grey knit", "Black leather shoulder bag", "Minimal ankle boots"],
-            "neutral_mid": ["Cream ribbed top", "Dark tailored trousers", "Fine black knit", "Structured shoulder bag", "Clean loafers"],
-            "neutral_light": ["Black fitted top", "Dark straight trousers", "Cream knit layer", "Tan crossbody bag", "Clean loafers"],
-            "earth": ["Ivory long-sleeve top", "Black tailored trousers", "Chocolate knit", "Woven tan bag", "Suede ankle boots"],
-            "cool": ["White ribbed top", "Charcoal trousers", "Blue denim base", "Silver-tone shoulder bag", "White trainers"],
-            "warm": ["Cream square-neck knit", "Dark blue denim", "Soft taupe top", "Gold-detail handbag", "Neutral boots"],
-            "soft": ["White bodysuit", "Grey straight-leg trousers", "Light knit top", "Pearl-detail bag", "Soft loafers"],
-            "bright": ["White clean-cut tee", "Dark tailored pants", "Neutral knit", "Structured mini bag", "Simple trainers"],
-            "default": ["White fitted top", "Straight-leg trousers", "Light knit layer", "Structured everyday bag", "Polished shoes"],
+            "neutral_dark": [
+                "White fitted tee",
+                "Blue straight jeans",
+                "Fine grey knit",
+                "Black leather shoulder bag",
+                "Minimal ankle boots",
+            ],
+            "neutral_mid": [
+                "Cream ribbed top",
+                "Dark tailored trousers",
+                "Fine black knit",
+                "Structured shoulder bag",
+                "Clean loafers",
+            ],
+            "neutral_light": [
+                "Black fitted top",
+                "Dark straight trousers",
+                "Cream knit layer",
+                "Tan crossbody bag",
+                "Clean loafers",
+            ],
+            "earth": [
+                "Ivory long-sleeve top",
+                "Black tailored trousers",
+                "Chocolate knit",
+                "Woven tan bag",
+                "Suede ankle boots",
+            ],
+            "cool": [
+                "White ribbed top",
+                "Charcoal trousers",
+                "Blue denim base",
+                "Silver-tone shoulder bag",
+                "White trainers",
+            ],
+            "warm": [
+                "Cream square-neck knit",
+                "Dark blue denim",
+                "Soft taupe top",
+                "Gold-detail handbag",
+                "Neutral boots",
+            ],
+            "soft": [
+                "White bodysuit",
+                "Grey straight-leg trousers",
+                "Light knit top",
+                "Pearl-detail bag",
+                "Soft loafers",
+            ],
+            "bright": [
+                "White clean-cut tee",
+                "Dark tailored pants",
+                "Neutral knit",
+                "Structured mini bag",
+                "Simple trainers",
+            ],
+            "default": [
+                "White fitted top",
+                "Straight-leg trousers",
+                "Light knit layer",
+                "Structured everyday bag",
+                "Polished shoes",
+            ],
         },
     },
     "accessories": {
         "suggested_pairing": "Curated outfits to style the accessory with",
         "style_sets": {
-            "default": ["Cream blazer outfit", "Black tailored base", "Relaxed denim look", "Minimal gold jewellery", "Polished everyday loafers"],
+            "default": [
+                "Cream blazer outfit",
+                "Black tailored base",
+                "Relaxed denim look",
+                "Minimal gold jewellery",
+                "Polished everyday loafers",
+            ],
         },
     },
     "footwear": {
         "suggested_pairing": "Curated outfits to style the footwear with",
         "style_sets": {
-            "default": ["Straight-leg denim outfit", "Clean white shirt", "Neutral blazer layer", "Minimal shoulder bag", "Simple everyday jewellery"],
+            "default": [
+                "Straight-leg denim outfit",
+                "Clean white shirt",
+                "Neutral blazer layer",
+                "Minimal shoulder bag",
+                "Simple everyday jewellery",
+            ],
         },
     },
 }
@@ -239,7 +503,14 @@ def build_image_url(style_name):
 
 
 def unique_price_points(count):
-    prices = [Decimal("9.00"), Decimal("12.00"), Decimal("15.00"), Decimal("19.00"), Decimal("23.00")]
+    prices = [
+        Decimal("9.00"),
+        Decimal("12.00"),
+        Decimal("15.00"),
+        Decimal("19.00"),
+        Decimal("23.00"),
+    ]
+
     return prices[:count]
 
 
@@ -250,15 +521,18 @@ def search_market_for_styles(style_list):
     for index, style in enumerate(style_list):
         platform = platform_for_index(index)
 
-        results.append(
-            {
-                "name": style,
-                "platform": platform,
-                "price": f"€{prices[index]:.2f}",
-                "image": build_image_url(style),
-                "link": build_search_url(platform, style),
-            }
-        )
+        result = {
+            "name": style,
+            "title": style,
+            "platform": platform,
+            "price": f"€{prices[index]:.2f}",
+            "image": build_image_url(style),
+            "image_url": build_image_url(style),
+            "link": build_search_url(platform, style),
+            "url": build_search_url(platform, style),
+        }
+
+        results.append(result)
 
     return results
 
@@ -285,7 +559,7 @@ def condition_multiplier(condition):
 
 @app.get("/")
 def home():
-    return {"status": "AI Engine Running", "version": "2.2.0"}
+    return {"status": "AI Engine Running", "version": "2.2.1"}
 
 
 @app.get("/health")
@@ -300,12 +574,35 @@ def recommend_outfit(item: OutfitRequest):
 
     style_config = PAIRING_LIBRARY[group]
     style_sets = style_config["style_sets"]
-    match_styles = style_sets.get(color_family) or style_sets.get("default")
+    match_styles = style_sets.get(color_family) or style_sets.get("default") or []
+
+    user_has = f"{item.color} {item.category}".strip()
+    pairing = style_config["suggested_pairing"]
+    recommendations = search_market_for_styles(match_styles)
 
     return {
-        "user_has": f"{item.color} {item.category}",
-        "suggested_pairing": style_config["suggested_pairing"],
-        "recommendations": search_market_for_styles(match_styles),
+        # Existing response keys. Do not remove.
+        "user_has": user_has,
+        "suggested_pairing": pairing,
+        "recommendations": recommendations,
+
+        # Compatibility keys for frontend builds expecting these names.
+        "pairing": pairing,
+        "suggestedAdditions": recommendations,
+        "items": recommendations,
+
+        # Nested compatibility object for frontend builds expecting outfit.*
+        "outfit": {
+            "userHas": user_has,
+            "user_has": user_has,
+            "category": item.category,
+            "color": item.color,
+            "pairing": pairing,
+            "suggested_pairing": pairing,
+            "suggestedAdditions": recommendations,
+            "items": recommendations,
+            "recommendations": recommendations,
+        },
     }
 
 
